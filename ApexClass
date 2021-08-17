@@ -1,0 +1,21 @@
+public class accController
+{
+    @AuraEnabled
+public static list<Account> getAccountlists(){
+
+return [Select id, Name,Industry,Phone from Account Order by CreatedDate desc limit 10];
+
+}
+
+@AuraEnabled
+public static void getAccountupdatedlist(Account newAcc){
+
+insert newAcc ;
+}
+      @AuraEnabled
+    public static void deleteAcc(Id accountId)
+    {
+       List<Account> acctList = [Select Id from Account where Id =: accountId];
+        delete acctList;
+    }
+}
